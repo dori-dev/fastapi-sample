@@ -4,6 +4,7 @@ from typing import Optional
 from fastapi import FastAPI
 from pydantic import BaseModel
 from fibonacci import fibonacci
+from enigma import enigma
 
 app = FastAPI()
 
@@ -16,6 +17,12 @@ class StockItem(BaseModel):
     name: str
     shares: int
     price: Optional[float] = 1000
+
+
+class Rotors(BaseModel):
+    rotor1: int
+    rotor2: int
+    rotor3: int
 
 
 @app.get('/')
@@ -76,4 +83,15 @@ def fib(number: int):
     return {
         'number': number,
         'result': fibonacci(number)
+    }
+
+
+@app.get('/enigma')
+def enigma_(text: str, rotors: Rotors = None):
+    if rotors is not None:
+        rotors = (rotors.rotor1, rotors.rotor2, rotors.rotor3)
+    return {
+        'input_text': text,
+        'rotors': rotors,
+        'result': enigma(text, rotors)
     }
