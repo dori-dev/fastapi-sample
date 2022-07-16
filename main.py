@@ -3,6 +3,7 @@
 from typing import Optional
 from fastapi import FastAPI
 from pydantic import BaseModel
+from fibonacci import fibonacci
 
 app = FastAPI()
 
@@ -67,4 +68,12 @@ def buy_stock(item: StockItem):
         'shares': item.shares,
         'price': item.price,
         'total_price': item.shares * item.price
+    }
+
+
+@app.get('/fib/{number}')
+def fib(number: int):
+    return {
+        'number': number,
+        'result': fibonacci(number)
     }
