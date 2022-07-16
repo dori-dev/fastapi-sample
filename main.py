@@ -1,5 +1,6 @@
 """sample fastapi project
 """
+from typing import Optional
 from fastapi import FastAPI
 from pydantic import BaseModel
 
@@ -8,6 +9,12 @@ app = FastAPI()
 
 class Number(BaseModel):
     x: int
+
+
+class StockItem(BaseModel):
+    name: str
+    shares: int
+    price: Optional[float] = 1000
 
 
 @app.get('/')
@@ -30,3 +37,34 @@ def power_of_number(data: Number):
     """
     x = data.x
     return {'result': x*x}
+
+
+@app.get('/stock/{id}')
+def get_stock_detail(id: int):
+    return {'stock_id': id}
+
+
+@app.get('/stock')
+def get_stock_with_query_params(id: int = None):
+    if id is None:
+        return [
+            {'stock_id': stock_id} for stock_id in range(10)
+        ]
+    if id == 1:
+        return {
+            'stock_id': id,
+            'stock': '∞'
+        }
+    return {
+        'stock_id': id
+    }
+
+
+@app.post('/stock/buy')
+def buy_stock(item: StockItem):
+    return {
+        'stock_name': item.name,
+        'shares': item.shares,
+        'price': item.price,
+        'total_price': item.shares * item.price
+    }
