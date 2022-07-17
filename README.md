@@ -43,6 +43,20 @@ uvicorn main:app --reload
 Api Docs
 [127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 
+## Deploy to Heroku
+
+```
+heroku login
+```
+
+```
+heroku create
+```
+
+```
+git push heroku master
+```
+
 #
 
 ## Links
