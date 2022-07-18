@@ -57,11 +57,19 @@ heroku create
 git push heroku master
 ```
 
+```
+heroku logs --tail
+```
+
+```
+heroku open
+```
+
 #
 
 ## Links
 
-Demo of Project: []()
+Demo of Project: [dori-fastapi-sample.herokuapp.com](https://dori-fastapi-sample.herokuapp.com/)
 
 Download Source Code: [Click Here](https://github.com/dori-dev/fastapi-sample/archive/refs/heads/master.zip)
 
