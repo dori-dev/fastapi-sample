@@ -1,3 +1,4 @@
 env/
 __pycache__
-rotor_state.enigma
+*.db
+*.log

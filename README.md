@@ -38,38 +38,19 @@ pip install -r requirements.txt
 uvicorn main:app --reload
 ```
 
+```
+alembic revision --autogenerate -m "create user model
+alembic upgrade head
+```
+
 ## Open On Browser
 
 Api Docs
 [127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 
-## Deploy to Heroku
-
-```
-heroku login
-```
-
-```
-heroku create
-```
-
-```
-git push heroku master
-```
-
-```
-heroku logs --tail
-```
-
-```
-heroku open
-```
-
 #
 
 ## Links
-
-Demo of Project: [dori-fastapi-sample.herokuapp.com](https://dori-fastapi-sample.herokuapp.com/)
 
 Download Source Code: [Click Here](https://github.com/dori-dev/fastapi-sample/archive/refs/heads/master.zip)
 
